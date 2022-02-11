@@ -37,16 +37,16 @@ class Intersection:
     def __init__(self, ID):
         self.ID = ID
         self.istrts = []
+        self.cycle = {}
         # incoming streets
         # (counciously not taking outgoing streets in concideration)
 
     def incoming(self, street):
         self.istrts.append(street)
 
-    def asigncycle(self, L):
-        self.cycle = {
-            "{self.istrts}"
-        }
+    # def asigncycle(self, L):
+    #     for i in range(len(L)) :
+    #         self.cycle[self.istrts[i]] = L[i]
 
 
 class Car:
@@ -60,7 +60,7 @@ class Car:
     # loop throught all of the streets cheking for thier ID , and then after that we can increment the occurance
 
     def car_inter(self, L):
-        # L here being the disctionnary of the streets
+        # L here being the dictionnary of the streets
         # the goal here is to give the car path in intersections as well as streets
         self.ipath = []
         for i in self.path:
