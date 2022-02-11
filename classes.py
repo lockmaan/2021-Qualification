@@ -1,3 +1,6 @@
+from numpy import append
+
+
 class Problem:
     def __init__(self, D, I, S, V, F):
         self.D = D
@@ -50,9 +53,15 @@ class Car:
     def __init__(self, n, L):
         self.n = int(n)
         self.path = []
+        self.car_inter = []
 
         for i in L:
             self.path.append(i)
+    # loop throught all of the streets cheking for thier ID , and then after that we can increment the occurance
 
-
-# loop throught all of the streets cheking for thier ID , and then after that we can increment the occurance
+    def car_inter(self, L):
+        # L here being the disctionnary of the streets
+        # the goal here is to give the car path in intersections as well as streets
+        self.ipath = []
+        for i in self.path:
+            self.ipath.append(L.get(i).b)

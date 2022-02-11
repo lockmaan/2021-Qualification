@@ -3,7 +3,7 @@ from classes import *
 
 
 def Readata(file_path):
-    streets = []
+    streets = {}
     intersections = []
     cars = []
     lines = open(file_path).readlines()
@@ -15,7 +15,7 @@ def Readata(file_path):
 
     for i in lines[1: problem.S + 1]:
         L = i.split()
-        streets.append(Street(*L))
+        streets[L[2]] = Street(*L)
         # constructing a list of all the streets
         intersections[int(L[1])].incoming(L[2])
         # adding the street to the list of the incoming streets(intersection object)
