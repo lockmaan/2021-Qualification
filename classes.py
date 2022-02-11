@@ -26,10 +26,11 @@ class Street:
         # the ID
         self.l = int(l)
         # length
-        self.occur = 0
+        self.coef = 0
+        # the street's coefficient
 
-    def occurences(self):
-        self.occur += 1
+    def coefi(self):
+        self.coef += 1
 
 
 class Intersection:
@@ -52,6 +53,7 @@ class Intersection:
 class Car:
     def __init__(self, n, L):
         self.n = int(n)
+        # number of streets the car goes through is n
         self.path = []
         self.car_inter = []
 
