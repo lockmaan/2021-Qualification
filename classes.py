@@ -28,6 +28,8 @@ class Street:
         # length
         self.coef = 0
         # the street's coefficient
+        self.ecoef = {}
+        # the street's enstance coeficient
 
     def coefi(self):
         self.coef += 1
