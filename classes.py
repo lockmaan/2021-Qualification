@@ -1,6 +1,3 @@
-from numpy import append
-
-
 class Problem:
     def __init__(self, D, I, S, V, F):
         self.D = D
