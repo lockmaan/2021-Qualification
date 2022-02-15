@@ -1,7 +1,7 @@
 from Read import Readata
+from Simulation import simulation
 
-
-streets, intersections, cars, lines, problem = Readata('data/b.txt')
+streets, intersections, cars, lines, problem = Readata('data/d.txt')
 
 """[most basic solution]
 for i in intersections:
@@ -33,14 +33,16 @@ def trafic_lights_simplified(streets, intersections, cars):
 def trafic_lights_c(car, l, e):
     global streets
     x = l*e
-    for i in range(x, x+l):
-        streets[car.path[i]].coefi()
-    for street in streets.values():
-        street.ecoef[e].append(
-            street.coef
-        )
-        street.coef = 0
-    return streets
+    if x+l <= len(car.path):
+        for i in range(x, x+l):
+            streets[car.path[i]].coefi()
+        for street in streets.values():
+            street.ecoef[e].append(
+                street.coef
+            )
+            street.coef = 0
+    else:
+        pass
 
 
 def trafic_lights_e(cars, n, e):
@@ -49,15 +51,16 @@ def trafic_lights_e(cars, n, e):
         street.ecoef[e] = []
 
     for car in cars:
-        l = car.n//n
+        l = car.n//n or 1
         trafic_lights_c(car, l, e)
 
     for street in streets.values():
         street.ecoef[e] = sum(street.ecoef[e])
 
 
-def trafic_lights(intersections, cars, n):
+def trafic_lights(cars, n):
     global streets
+    global intersections
     for e in range(n):
         trafic_lights_e(cars, n, e)
 
@@ -72,4 +75,5 @@ def trafic_lights(intersections, cars, n):
     return cycles
 
 
-print(trafic_lights(intersections, cars, 2))
+trafic_lights(cars, 10)
+print(simulation(streets, intersections, cars, problem))

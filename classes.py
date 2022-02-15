@@ -27,9 +27,13 @@ class Street:
         # the street's coefficient
         self.ecoef = {}
         # the street's enstance coeficient
+        self.isgreen = False
 
     def coefi(self):
         self.coef += 1
+
+    def change(self):
+        self.isgreen = not self.isgreen
 
 
 class Intersection:
@@ -55,7 +59,8 @@ class Car:
         # number of streets the car goes through is n
         self.path = []
         self.car_inter = []
-
+        self.loc = 0
+        # initialieses the cars location at the start
         for i in L:
             self.path.append(i)
     # loop throught all of the streets cheking for thier ID , and then after that we can increment the occurance
@@ -66,3 +71,19 @@ class Car:
         self.ipath = []
         for i in self.path:
             self.ipath.append(L.get(i).b)
+
+    def destination(self, Streets):
+        self.dest = 0
+        for street in self.path:
+            self.dest += Streets[street].l
+
+    def endstrt(self, Streets):
+        r = self.loc
+        self.curr = self.path[0]
+        while r > 0:
+            for street in self.path:
+                self.curr = street
+                r -= Streets[street].l
+        if r == 0:
+            self.at_stop = True
+        self.at_stop = False
