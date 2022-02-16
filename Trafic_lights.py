@@ -1,7 +1,7 @@
 from Read import Readata
 from Simulation import simulation
 
-streets, intersections, cars, lines, problem = Readata('data/d.txt')
+streets, intersections, cars, lines, problem = Readata('data/f.txt')
 
 """[most basic solution]
 for i in intersections:
